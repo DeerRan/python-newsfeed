@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+def init_db():
+  Base.metadata.create_all(engine)
+
 # connect to database using env variable
 engine = create_engine(getenv('DB_URL'), echo=True, pool_size=20, max_overflow=0)
 Session = sessionmaker(bind=engine)
